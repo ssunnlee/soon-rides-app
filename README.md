@@ -9,6 +9,7 @@ https://docs.google.com/document/d/1UYnjJCKB56O0UA90iMMz_Pm1GA_cC5sWgn6789ZZMYY/
 
 **resources**
 google sheets connection API
-https://medium.com/analytics-vidhya/how-to-read-and-write-data-to-google-spreadsheet-using-python-ebf54d51a72c
+https://medium.com/analytics-vidhya/how-to-read-and-write-data-to-google-spreadsheet-using-python-ebf54d51a72c <br />
+
 google tutorial on sheets API python quickstart
 https://developers.google.com/sheets/api/quickstart/python
