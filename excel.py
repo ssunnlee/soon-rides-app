@@ -8,10 +8,11 @@ from googleapiclient.errors import HttpError
 
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
-SPREADSHEET_ID = '18MYt45bq_UjoAKP-cQjg5nVeyAXaC7lpC_CsUIKXJns'
+# SPREADSHEET_ID = '18MYt45bq_UjoAKP-cQjg5nVeyAXaC7lpC_CsUIKXJns'
+SPREADSHEET_ID = '16OQKQWg07rtscPfQ2oBWr4CvWdYMioizZddOdNF-YiE'
 SAMPLE_RANGE = 'A1:O1000'
 
-def main():
+def get_info():
     ##ASKING FOR CREDENTIALS
     creds = None 
     #the json file in the folder stores user's access and refreshes tokens
@@ -30,6 +31,7 @@ def main():
 
     ##CALLING THE SHEETS API
     try: 
+        info = []
         service = build('sheets', 'v4', credentials=creds)
 
         sheet = service.spreadsheets()
@@ -40,10 +42,24 @@ def main():
             print('No data found.')
             return
         
-        print('Started printing')
+        # print('Started printing')
         for row in values:
-            print(row)
+            info.append(row)
+        return info
     except HttpError as err:
         print(err)
 
-main()
+def organize_info(info):
+    return_list = []
+    for i, row in enumerate(info):
+        if i == 0:
+            keys = row
+        else:
+            person_dict = dict()
+            for j, element in enumerate(row):
+                person_dict[keys[j]] = element
+            return_list.append(person_dict)
+    return return_list
+
+if __name__ == "__main__":
+    print(organize_info(get_info()))
